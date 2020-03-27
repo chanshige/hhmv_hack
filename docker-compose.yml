@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  hhvm:
+    build: ./docker
+    container_name: hello_hhvm
+    volumes:
+      - .:/var/www
+      - ./docker/php.ini:/etc/hhvm/php.ini
+    command: hhvm --mode server -vServer.AllowRunAsRoot=1
+    ports:
+      - 8008:80
+      - 8009:81
+    environment:
+      TZ: Asia/Tokyo
